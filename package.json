@@ -1,0 +1,9 @@
+{
+  "name": "bioforge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Testes da lógica local de geração de bios para LinkedIn.",
+  "scripts": {
+    "test": "node --test"
+  }
+}

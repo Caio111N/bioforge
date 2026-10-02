@@ -1,0 +1,608 @@
+<!-- bioforge/index.html - estrutura acessível do gerador e da prévia de perfil. -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f2e9" />
+    <meta
+      name="description"
+      content="Forje uma bio para LinkedIn com modelos locais, sem enviar seus dados."
+    />
+    <title>Bioforge | Forje sua bio para o LinkedIn</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="data.js" defer></script>
+    <script src="generator.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#results-title">Pular para o resultado</a>
+
+    <div class="layout-container">
+      <header class="site-header">
+        <a class="brand-link" href="index.html" aria-label="Bioforge, início">
+          <svg
+            class="brand-wordmark"
+            viewBox="0 0 154 38"
+            role="img"
+            aria-labelledby="brand-title"
+          >
+            <title id="brand-title">Bioforge</title>
+            <path
+              d="M17 3 29 10v15l-12 7L5 25V10L17 3Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linejoin="round"
+            />
+            <path
+              d="m11 15 6 4 6-4M17 19v7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <text
+              x="40"
+              y="27"
+              fill="currentColor"
+              font-family="system-ui, sans-serif"
+              font-size="23"
+              font-weight="720"
+            >
+              Bioforge
+            </text>
+          </svg>
+        </a>
+        <p class="header-tagline">Forje sua bio para o LinkedIn em segundos</p>
+      </header>
+
+      <main class="workspace">
+        <section class="editor-panel" aria-labelledby="form-title">
+          <header class="editor-heading">
+            <span class="section-number" aria-hidden="true">01</span>
+            <div>
+              <h1 id="form-title">Monte sua apresentação</h1>
+              <p>Um pouco de contexto já dá forma ao seu perfil.</p>
+            </div>
+          </header>
+
+          <form id="bio-form" autocomplete="off" novalidate>
+            <section class="form-block" aria-labelledby="about-you-title">
+              <h2 id="about-you-title">Sobre você</h2>
+              <div class="field">
+                <label id="area-label" for="area-button"
+                  >Área <span class="required-tag">Obrigatório</span></label
+                >
+                <div class="area-picker" id="area-picker">
+                  <input id="area" name="area" type="hidden" value="" />
+                  <button
+                    class="area-trigger"
+                    id="area-button"
+                    type="button"
+                    role="combobox"
+                    aria-labelledby="area-label area-value-label"
+                    aria-describedby="area-help"
+                    aria-haspopup="listbox"
+                    aria-controls="area-listbox"
+                    aria-expanded="false"
+                    aria-required="true"
+                  >
+                    <span id="area-value-label">Selecione sua área</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path
+                        d="m3 6 5 5 5-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    class="area-listbox"
+                    id="area-listbox"
+                    role="listbox"
+                    aria-labelledby="area-label"
+                    hidden
+                  ></div>
+                </div>
+                <p class="field-help" id="area-help">
+                  Escolha a área que melhor representa seu foco.
+                </p>
+              </div>
+
+              <fieldset class="choice-field">
+                <legend>
+                  Momento de carreira
+                  <span class="required-tag">Obrigatório</span>
+                </legend>
+                <div
+                  class="choice-list"
+                  role="radiogroup"
+                  aria-labelledby="career-label"
+                  aria-describedby="career-help"
+                  aria-required="true"
+                >
+                  <span class="visually-hidden" id="career-label"
+                    >Momento de carreira</span
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="momento"
+                      value="Estudante buscando estágio"
+                      required
+                    /><span>Buscando estágio</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="momento"
+                      value="Estagiário"
+                    /><span>Estagiário</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="momento"
+                      value="Recém-formado(a)"
+                    /><span>Recém-formado(a)</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="momento"
+                      value="Profissional em transição"
+                    /><span>Em transição</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="momento"
+                      value="Profissional experiente"
+                    /><span>Experiente</span></label
+                  >
+                </div>
+                <p class="field-help" id="career-help">
+                  Selecione seu momento para personalizar a apresentação.
+                </p>
+              </fieldset>
+
+              <div class="field">
+                <label for="nome"
+                  >Nome <span class="optional-tag">Opcional</span></label
+                >
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  maxlength="120"
+                  placeholder="Como você se chama?"
+                />
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="formacao"
+                    >Formação ou curso
+                    <span class="optional-tag">Opcional</span></label
+                  >
+                  <input
+                    id="formacao"
+                    name="formacao"
+                    type="text"
+                    maxlength="180"
+                    placeholder="Ex.: Sistemas de Informação"
+                  />
+                </div>
+                <div class="field">
+                  <label for="cidade"
+                    >Cidade <span class="optional-tag">Opcional</span></label
+                  >
+                  <input
+                    id="cidade"
+                    name="cidade"
+                    type="text"
+                    maxlength="100"
+                    placeholder="Ex.: Recife, PE"
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section class="form-block" aria-labelledby="skills-title">
+              <h2 id="skills-title">Habilidades</h2>
+              <div class="field">
+                <label for="habilidade-input">O que você sabe fazer?</label>
+                <div class="tag-input-wrap">
+                  <ul
+                    id="skill-list"
+                    class="skill-list"
+                    aria-label="Habilidades adicionadas"
+                  ></ul>
+                  <input
+                    id="habilidade-input"
+                    type="text"
+                    placeholder="Digite e pressione Enter"
+                    aria-describedby="skill-hint skill-count skill-status"
+                  />
+                </div>
+                <div class="field-meta">
+                  <span id="skill-hint"
+                    >Enter ou vírgula adiciona uma etiqueta</span
+                  >
+                  <span id="skill-count" class="skill-count">0 de 8</span>
+                </div>
+                <p
+                  class="field-help skill-status"
+                  id="skill-status"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </div>
+            </section>
+
+            <section class="form-block" aria-labelledby="intent-title">
+              <h2 id="intent-title">Objetivo e tom</h2>
+              <fieldset class="choice-field">
+                <legend>
+                  O que você busca?
+                  <span class="required-tag">Obrigatório</span>
+                </legend>
+                <div
+                  class="choice-list"
+                  role="radiogroup"
+                  aria-labelledby="goal-label"
+                  aria-describedby="goal-help"
+                  aria-required="true"
+                >
+                  <span class="visually-hidden" id="goal-label">Objetivo</span>
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="objetivo"
+                      value="Conseguir um estágio ou primeira vaga"
+                      required
+                    /><span>Estágio ou primeira vaga</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="objetivo"
+                      value="Mudar de área"
+                    /><span>Mudar de área</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="objetivo"
+                      value="Fazer networking"
+                    /><span>Networking</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="objetivo"
+                      value="Atrair clientes ou projetos"
+                    /><span>Clientes ou projetos</span></label
+                  >
+                </div>
+                <p class="field-help" id="goal-help">
+                  Seu objetivo ajuda a orientar o texto.
+                </p>
+              </fieldset>
+
+              <fieldset class="choice-field">
+                <legend>
+                  Tom de voz <span class="required-tag">Obrigatório</span>
+                </legend>
+                <div
+                  class="choice-list"
+                  role="radiogroup"
+                  aria-labelledby="tone-label"
+                  aria-describedby="tone-help"
+                  aria-required="true"
+                >
+                  <span class="visually-hidden" id="tone-label"
+                    >Tom de voz</span
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="tom"
+                      value="Profissional"
+                      required
+                    /><span>Profissional</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="tom"
+                      value="Próximo e descontraído"
+                    /><span>Próximo</span></label
+                  >
+                  <label class="choice-chip"
+                    ><input
+                      type="radio"
+                      name="tom"
+                      value="Direto e objetivo"
+                    /><span>Direto</span></label
+                  >
+                </div>
+                <p class="field-help" id="tone-help">
+                  Escolha como quer conversar com quem lê.
+                </p>
+              </fieldset>
+            </section>
+
+            <div class="form-actions">
+              <button class="text-button" id="clear-button" type="button">
+                <span aria-hidden="true">×</span> Limpar tudo
+              </button>
+              <p
+                id="clear-status"
+                class="action-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </div>
+          </form>
+        </section>
+
+        <section class="results-panel" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <p class="results-kicker">02 · Prévia de perfil</p>
+              <h2 id="results-title" tabindex="-1">Sua bio ganha forma</h2>
+            </div>
+            <span id="example-badge" class="state-badge">Exemplo</span>
+          </div>
+          <p
+            id="required-feedback"
+            class="required-feedback"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></p>
+
+          <div
+            id="results"
+            class="result-content"
+            aria-live="polite"
+            aria-atomic="false"
+          >
+            <article
+              class="profile-preview"
+              aria-label="Prévia de perfil profissional"
+            >
+              <div class="profile-cover"><span>Prévia de perfil</span></div>
+              <div class="profile-body">
+                <div class="profile-identity">
+                  <div
+                    id="profile-avatar"
+                    class="profile-avatar"
+                    aria-hidden="true"
+                  >
+                    CR
+                  </div>
+                  <div class="profile-name-wrap">
+                    <h3 id="profile-name">Camila Ribeiro</h3>
+                    <p class="profile-caption">Apresentação profissional</p>
+                  </div>
+                </div>
+                <p id="profile-headline" class="profile-headline"></p>
+                <p id="profile-about" class="profile-about"></p>
+                <button
+                  id="about-toggle"
+                  class="more-button"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="profile-about"
+                >
+                  ver mais
+                </button>
+              </div>
+            </article>
+
+            <section
+              class="copy-sections"
+              aria-label="Textos prontos para copiar"
+            >
+              <article
+                class="copy-card copy-card-headline"
+                aria-labelledby="headline-label"
+              >
+                <div class="copy-card-heading">
+                  <h3 id="headline-label">Título</h3>
+                  <div class="copy-tools">
+                    <span id="headline-count" class="character-count"
+                      >0 / 220</span
+                    >
+                    <div
+                      id="headline-progress"
+                      class="character-meter"
+                      role="progressbar"
+                      aria-label="Uso do limite do título"
+                      aria-valuemin="0"
+                      aria-valuemax="220"
+                      aria-valuenow="0"
+                    >
+                      <span id="headline-meter"></span>
+                    </div>
+                    <button
+                      class="copy-button"
+                      type="button"
+                      data-copy="headline"
+                      aria-label="Copiar título"
+                    >
+                      <span class="copy-label">Copiar</span
+                      ><svg
+                        class="copy-check"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                        hidden
+                      >
+                        <path
+                          d="m3 8 3.2 3.2L13 4.5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <p id="headline-output" class="copy-text headline-output"></p>
+              </article>
+
+              <article
+                class="copy-card copy-card-about"
+                aria-labelledby="about-label"
+              >
+                <div class="copy-card-heading">
+                  <h3 id="about-label">Sobre</h3>
+                  <div class="copy-tools">
+                    <span id="sobre-count" class="character-count"
+                      >0 / 2.600</span
+                    >
+                    <div
+                      id="sobre-progress"
+                      class="character-meter"
+                      role="progressbar"
+                      aria-label="Uso do limite do Sobre"
+                      aria-valuemin="0"
+                      aria-valuemax="2600"
+                      aria-valuenow="0"
+                    >
+                      <span id="sobre-meter"></span>
+                    </div>
+                    <button
+                      class="copy-button"
+                      type="button"
+                      data-copy="sobre"
+                      aria-label="Copiar texto Sobre"
+                    >
+                      <span class="copy-label">Copiar</span
+                      ><svg
+                        class="copy-check"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                        hidden
+                      >
+                        <path
+                          d="m3 8 3.2 3.2L13 4.5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <p id="sobre-output" class="copy-text about-output"></p>
+              </article>
+
+              <article
+                class="copy-card copy-card-short"
+                aria-labelledby="short-label"
+              >
+                <div class="copy-card-heading">
+                  <h3 id="short-label">Versão curta</h3>
+                  <div class="copy-tools">
+                    <span id="curta-count" class="character-count"
+                      >0 / 300</span
+                    >
+                    <div
+                      id="curta-progress"
+                      class="character-meter"
+                      role="progressbar"
+                      aria-label="Uso do limite da versão curta"
+                      aria-valuemin="0"
+                      aria-valuemax="300"
+                      aria-valuenow="0"
+                    >
+                      <span id="curta-meter"></span>
+                    </div>
+                    <button
+                      class="copy-button"
+                      type="button"
+                      data-copy="curta"
+                      aria-label="Copiar versão curta"
+                    >
+                      <span class="copy-label">Copiar</span
+                      ><svg
+                        class="copy-check"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                        hidden
+                      >
+                        <path
+                          d="m3 8 3.2 3.2L13 4.5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <p id="curta-output" class="copy-text short-output"></p>
+              </article>
+            </section>
+          </div>
+
+          <div class="results-actions">
+            <p
+              id="copy-status"
+              class="copy-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <button
+              class="primary-button desktop-regenerate"
+              type="button"
+              data-action="regenerate"
+            >
+              <span class="forge-symbol" aria-hidden="true">↻</span> Gerar outra
+              versão
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span class="privacy-mark" aria-hidden="true"></span>
+        <p>Seus dados ficam só no seu navegador. Nada é enviado.</p>
+      </footer>
+    </div>
+
+    <nav class="mobile-actions" aria-label="Ações rápidas">
+      <button class="secondary-button" type="button" data-copy-bio>
+        <span class="copy-label">Copiar bio</span
+        ><svg class="copy-check" viewBox="0 0 16 16" aria-hidden="true" hidden>
+          <path
+            d="m3 8 3.2 3.2L13 4.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="primary-button" type="button" data-action="regenerate">
+        <span class="forge-symbol" aria-hidden="true">↻</span
+        ><span class="mobile-generate-label">Nova versão</span>
+      </button>
+    </nav>
+  </body>
+</html>
