@@ -112,7 +112,7 @@ npm test
 
 ## GitHub
 
-O repositório público será vinculado aqui após a confirmação da publicação.
+Repositório público: [github.com/Caio111N/bioforge](https://github.com/Caio111N/bioforge).
 
 ## Licença
 
